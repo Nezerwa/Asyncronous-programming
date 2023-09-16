@@ -21,8 +21,9 @@ promise.then((response)=>{
 // Should print out "Resolved!"
 // ADD CODE HERE
 
-// // Challenge 3
+// Challenge 3
 
-// promise = new Promise(function (resolve, reject) {
-//   // ADD CODE HERE
-// });
+promise = new Promise(function (resolve, reject) {
+  reject("Rejected!");
+})
+promise.catch((error)=> console.log(error))
