@@ -2,6 +2,7 @@ function myFetch(url) {
   return new Promise((resolve, reject) => {
     const request = new XMLHttpRequest();
     request.open("GET", url);
+    request.responseType = "json";
     request.onload = () => {
       if (request.status >= 200 && request.status < 300) {
         resolve(request.response);
@@ -15,6 +16,6 @@ function myFetch(url) {
     request.send();
   });
 }
-myFetch("https://my-random-api.com/data")
+myFetch("https://jsonplaceholder.typicode.com/posts/1")
   .then((data) => console.log(data))
   .catch((error) => console.log("Error:", error));
