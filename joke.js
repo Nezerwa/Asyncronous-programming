@@ -2,15 +2,13 @@ function fetchUserTodos() {
   const end1 = new Promise((resolve, reject) => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((res) => res.json())
-      .then((data) => resolve(data))
-      .catch((err) => reject(err));
+      .then((data) => resolve(data));
   });
 
   const end2 = new Promise((resolve, reject) => {
     fetch("https://jsonplaceholder.typicode.com/todos")
       .then((res) => res.json())
-      .then((data) => resolve(data))
-      .catch((err) => reject(err));
+      .then((data) => resolve(data));
   });
 
   return Promise.all([end1, end2])
