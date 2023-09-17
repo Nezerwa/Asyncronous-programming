@@ -1,9 +1,9 @@
 function myReduce(cb, initial) {
-  let result = initial ?? this[0];
+  let results = initial ?? this[0];
   for (let i = initial == undefined ? 1 : 0; i < this.length; i++) {
-    result = cb(result, this[i], i, this);
+    results = cb(results, this[i], i, this);
   }
-  return result;
+  return results;
 }
 
 Array.prototype.myReduce = myReduce;
