@@ -10,6 +10,7 @@ function getFastPosts() {
       .then((data) => data.json())
       .then((data) => resolve(data))
       .catch(() => console.log("This is enable to be reached"));
+    reject("this is enable to be reached");
   });
   return Promise.all([endPoint1, endPoint2]).then((value) => {
     console.log(value);
