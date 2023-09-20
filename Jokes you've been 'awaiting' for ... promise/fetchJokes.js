@@ -1,20 +1,22 @@
 async function sayJoke(apiUrl, jokeId) {
   try {
     const endPoint = await fetch(apiUrl);
+    if (!endPoint.ok) {
+      throw new Error(`No jokes at url: ${apiUrl}`);
+    }
     const response = await endPoint.json();
     const filtered = await response.filter((item) => item.id == jokeId);
-    if(filtered.length == 0){
+    if (filtered.length == 0) {
       throw new Error(`No jokes found id: ${jokeId}`);
-    }else if(!response.ok){
-      throw new Error(`No jokes at url: ${url}`);
+    } else {
+      return filtered;
     }
-    return filtered;
-  }catch{
-
+  } catch (error) {
+    console.log(error);
   }
 }
 
 sayJoke(
   "https://my-json-server.typicode.com/IbrahimBagalwa/test-json-placeholder/jokes",
-  144
-).then((res) => console.log(res));
+  327
+).then((res) => console.log(res))
