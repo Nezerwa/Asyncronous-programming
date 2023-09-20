@@ -13,10 +13,18 @@ async function sayJoke(apiUrl, jokeId) {
     }
   } catch (error) {
     console.log(error);
+    throw error; // Propagate the error to be caught in the calling function
   }
 }
 
 sayJoke(
   "https://my-json-server.typicode.com/IbrahimBagalwa/test-json-placeholder/jokes",
-  327
-).then((res) => console.log(res))
+  101
+)
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((error) => {
+    // Catch any errors that occur during the fetch operation or in the `then` block
+    console.log(error);
+  });
