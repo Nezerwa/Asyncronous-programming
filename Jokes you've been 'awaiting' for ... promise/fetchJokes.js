@@ -1,15 +1,20 @@
 async function sayJoke(apiUrl, jokeId) {
+  apiUrl =
+    "https://my-json-server.typicode.com/IbrahimBagalwa/test-json-placeholder/jokes";
   try {
     const endPoint = await fetch(apiUrl);
     if (!endPoint.ok) {
       throw new Error(`No jokes at url: ${apiUrl}`);
     }
     const response = await endPoint.json();
-    const filtered = await response.filter((item) => item.id == jokeId);
-    if (filtered.length == 0) {
+    const filtered = await response.find((item) => item.id == jokeId);
+    if (!filtered) {
       throw new Error(`No jokes found id: ${jokeId}`);
     } else {
-      return filtered;
+      return {
+        saySetup: () => filtered.setup,
+        sayPunchLine: () => filtered.punchLine,
+      };
     }
   } catch (error) {
     console.log(error);
@@ -17,12 +22,9 @@ async function sayJoke(apiUrl, jokeId) {
   }
 }
 
-sayJoke(
-  "https://my-json-server.typicode.com/IbrahimBagalwa/test-json-placeholder/jokes",
-  101
-)
+sayJoke("http://great.jokes/christmas", 101)
   .then((res) => {
-    console.log(res);
+    console.log(res.saySetup());
   })
   .catch((error) => {
     // Catch any errors that occur during the fetch operation or in the `then` block
