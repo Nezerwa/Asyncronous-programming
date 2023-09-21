@@ -18,7 +18,7 @@ async function sayJoke(apiUrl, jokeId) {
     }
   } catch (error) {
     console.log(error);
-    throw error; // Propagate the error to be caught in the calling function
+    throw error; 
   }
 }
 
@@ -27,6 +27,5 @@ sayJoke("http://great.jokes/christmas", 101)
     console.log(res.saySetup());
   })
   .catch((error) => {
-    // Catch any errors that occur during the fetch operation or in the `then` block
     console.log(error);
   });
